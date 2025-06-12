@@ -1,32 +1,22 @@
-import { useState } from 'react'
-
+import React, { useState } from 'react'
 export default function Chatbot() {
-  const [q, setQ] = useState('')
-
+  const [input, setInput] = useState('')
   return (
     <div className="flex flex-col h-full">
-      <div className="flex-1 p-4 overflow-auto">
-        <div className="inline-block bg-teal-600 text-white p-3 rounded-lg">
-          Hello, I am Grand Agent. How can I help you today?
+      <div className="flex-1 overflow-auto mb-4">
+        <div className="inline-block bg-teal-600 text-white px-4 py-2 rounded-lg">
+          Hello! I'm your Grand MotorCars AI Assistant. How can I help you today?
         </div>
-        {/* TODO: render history of questions/answers here */}
       </div>
-      <div className="flex border-t p-2">
+      <div className="flex">
         <input
-          type="text"
-          value={q}
-          onChange={e => setQ(e.target.value)}
-          className="flex-1 border rounded-l px-3 py-2"
-          placeholder="Type your question..."
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          placeholder="Ask about sales, inventory, reports..."
+          className="flex-1 bg-gray-800 text-gray-200 placeholder-gray-500 border border-gray-700 rounded-l-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
         />
-        <button
-          onClick={() => {
-            /* TODO: call your LLM & append to history */
-            setQ('')
-          }}
-          className="bg-teal-600 text-white px-4 rounded-r"
-        >
-          🔍
+        <button className="bg-teal-600 hover:bg-teal-700 px-4 rounded-r-md text-white">
+          →
         </button>
       </div>
     </div>

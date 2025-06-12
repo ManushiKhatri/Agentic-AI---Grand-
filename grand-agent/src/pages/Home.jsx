@@ -1,13 +1,17 @@
-import Chatbot from 'c:/Users/manus/OneDrive - Howard University/Documents/AI Agent/Agentic-AI---Grand-/grand-agent/src/Components/Chatbot.jsx'
-
+import React from 'react'
+import PageCard from '../components/PageCard.jsx'
+import Chatbot from '../components/Chatbot.jsx'
 export default function Home() {
   return (
-    <div className="h-full p-6 flex flex-col">
-      <h1 className="text-2xl font-bold mb-4">Grand MotorCars AI Agent</h1>
-      <div className="flex-1 border rounded overflow-hidden">
-        <Chatbot />
+    <PageCard title="Grand MotorCars AI Agent">
+      <div className="flex flex-col h-full">
+        <div className="flex-1 mb-4">
+          <Chatbot />
+        </div>
+        <div className="bg-gray-800 rounded-lg p-6 flex items-center justify-center">
+          <p className="text-gray-500 italic">Ask a query above to render charts & tables</p>
+        </div>
       </div>
-      {/* Below this you could render charts/table when the bot “pushes” results */}
-    </div>
+    </PageCard>
   )
 }

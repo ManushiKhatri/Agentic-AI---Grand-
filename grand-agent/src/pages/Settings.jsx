@@ -1,33 +1,35 @@
-import { useNavigate } from 'react-router-dom'
-
+import React from 'react'
+import PageCard from '../components/PageCard.jsx'
+import SettingsMenu from '../components/SettingsMenu.jsx'
 export default function Settings() {
-  const nav = useNavigate()
-  // TODO: pull real user data from your auth/context
-  const user = { name:'Jane Doe', email:'jane@example.com', role:'Manager' }
-
+  const user = { name:'Manushi Khatri', email:'manushi@gmail.com', role:'Intern' }
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex items-center justify-between">
-        <button onClick={()=>nav(-1)} className="text-teal-600">← Back</button>
-        <h1 className="text-xl font-bold">Settings</h1>
-        <div style={{width:24}}></div>
-      </div>
-
-      <div className="flex flex-col items-center space-y-2">
-        <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center text-xl">
-          {user.name.charAt(0)}
+    <div className="flex flex-1 overflow-auto">
+      <SettingsMenu />
+      <PageCard title="Settings">
+        <div className="bg-gray-800 rounded-xl p-6 flex items-center space-x-6 mb-6">
+          <div className="h-16 w-16 bg-gray-700 rounded-full" />
+          <div className="text-gray-200">
+            <p><strong>Name:</strong> {user.name}</p>
+            <p><strong>Email:</strong> {user.email}</p>
+            <p><strong>Role:</strong> {user.role}</p>
+          </div>
         </div>
-        <p>Name: {user.name}</p>
-        <p>Email: {user.email}</p>
-        <p>Role: {user.role}</p>
-      </div>
-
-      <div className="space-y-2">
-        <button className="w-full border rounded px-4 py-2 text-left">Chatbot Settings / Agent Settings</button>
-        <button className="w-full border rounded px-4 py-2 text-left">Security & Privacy</button>
-        <button className="w-full border rounded px-4 py-2 text-left">Help & Support</button>
-        <button className="w-full border rounded px-4 py-2 text-left text-red-600">Logout</button>
-      </div>
+        <div className="space-y-2">
+          {['Chatbot Settings / Agent Settings','Security & Privacy','Help & Support','Logout'].map((label,i) => (
+            <button
+              key={i}
+              className={`w-full text-left px-4 py-2 rounded-md transition-colors ${
+                label === 'Logout'
+                  ? 'bg-gray-900 text-red-500 hover:bg-gray-800'
+                  : 'bg-gray-900 text-gray-200 hover:bg-gray-800'
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </PageCard>
     </div>
   )
 }
